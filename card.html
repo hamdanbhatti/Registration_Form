@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta
+         name="viewport"
+         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+      />
+      <title>User Information Card</title>
+      <style>
+         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+         body {
+            font-family: "Poppins", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #333;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+         }
+         .card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: white;
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+         }
+         .card h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 24px;
+         }
+         .card p {
+            font-size: 16px;
+            margin: 10px 0;
+            color: #666;
+         }
+         @media (max-width: 600px) {
+            .card {
+               padding: 15px;
+            }
+            .card h2 {
+               font-size: 20px;
+            }
+            .card p {
+               font-size: 14px;
+            }
+         }
+      </style>
+   </head>
+   <body>
+      <div class="card">
+         <h2>User Information</h2>
+         <div id="userDetails"></div>
+      </div>
+
+      <script>
+         const urlParams = new URLSearchParams(window.location.search);
+         const userDetails = document.getElementById("userDetails");
+
+         userDetails.innerHTML = `
+            <p><strong>Name:</strong> ${urlParams.get("fullName") || ""}</p>
+            <p><strong>Email:</strong> ${urlParams.get("email") || ""}</p>
+            <p><strong>Phone:</strong> ${urlParams.get("phone") || ""}</p>
+            <p><strong>Gender:</strong> ${urlParams.get("gender") || ""}</p>
+            <p><strong>Unique ID:</strong> ${
+               urlParams.get("uniqueId") || Math.floor(Math.random() * 100000)
+            }</p>
+        `;
+      </script>
+   </body>
+</html>
